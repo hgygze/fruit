@@ -5,6 +5,7 @@ import fruit.vo.Goods;
 
 import java.math.BigDecimal;
 
+
 public class Apple extends Goods implements FruitService {
 	
 	public Apple() {

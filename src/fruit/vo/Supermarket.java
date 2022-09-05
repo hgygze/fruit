@@ -14,7 +14,20 @@ public class Supermarket {
 	private BigDecimal reduce;
 	
 	private List<Goods> goodsList = new ArrayList<Goods>();
-	
+
+	public BigDecimal calculate(Map<Goods, Integer> goodsMap) {
+		BigDecimal totalPrice = BigDecimal.ZERO;
+		for(Goods goods : goodsMap.keySet()) {
+			BigDecimal singlePrice = goods.getPrice().multiply(new BigDecimal(goodsMap.get(goods))).setScale(2,BigDecimal.ROUND_DOWN);
+			totalPrice = totalPrice.add(singlePrice);
+		}
+		//满减
+		if(this.satisfy != null && this.reduce != null) {
+			int reduceCount = totalPrice.divide(this.satisfy).setScale(0, BigDecimal.ROUND_DOWN).intValue();
+			totalPrice = totalPrice.subtract(this.reduce.multiply(new BigDecimal(Integer.toString(reduceCount)))) ;
+		}
+		return totalPrice;
+	}
 	public List<Goods> getGoodsList() {
 		return goodsList;
 	}
@@ -33,20 +46,6 @@ public class Supermarket {
 
 	public void setReduce(BigDecimal reduce) {
 		this.reduce = reduce;
-	}
-
-	public BigDecimal calculate(Map<Goods, Integer> goodsMap) {
-		BigDecimal totalPrice = BigDecimal.ZERO;
-		for(Goods goods : goodsMap.keySet()) {
-			BigDecimal singlePrice = goods.getPrice().multiply(new BigDecimal(goodsMap.get(goods))).setScale(2,BigDecimal.ROUND_DOWN);
-			totalPrice = totalPrice.add(singlePrice);
-		}
-		//满减
-		if(this.satisfy != null && this.reduce != null) {
-			int reduceCount = totalPrice.divide(this.satisfy).setScale(0, BigDecimal.ROUND_DOWN).intValue();
-			totalPrice = totalPrice.subtract(this.reduce.multiply(new BigDecimal(Integer.toString(reduceCount)))) ;
-		}
-		return totalPrice;
 	}
 	
 	

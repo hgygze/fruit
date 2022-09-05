@@ -6,6 +6,7 @@ public interface FruitService {
 	
 	/**
 	 * 打折
+	 *
 	 */
 	 void discount(BigDecimal discountRate);
 
