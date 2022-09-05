@@ -1,6 +1,10 @@
-package fruit;
+package fruit.service.serviceimpl;
 
-public class ProxyShoppingCart implements ShoppingCart{
+import fruit.vo.Goods;
+import fruit.service.ShoppingCartService;
+import fruit.vo.Supermarket;
+
+public class ProxyShoppingCart implements ShoppingCartService {
 	
 	private Supermarket supermarket;
 	

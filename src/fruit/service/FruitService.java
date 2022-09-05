@@ -1,8 +1,8 @@
-package fruit;
+package fruit.service;
 
 import java.math.BigDecimal;
 
-public interface Fruit {
+public interface FruitService {
 	
 	/**
 	 * 打折

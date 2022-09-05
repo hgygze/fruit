@@ -1,4 +1,4 @@
-package fruit;
+package fruit.factory;
 public class FruitFactory {
 	
 	public <T> T getFruit(Class<T> clazz) {

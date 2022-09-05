@@ -1,10 +1,12 @@
-package fruit;
+package fruit.service.serviceimpl;
 
-import java.math.BigDecimal;
+import fruit.vo.Goods;
+import fruit.service.ShoppingCartService;
+
 import java.util.HashMap;
 import java.util.Map;
 
-public class Customer implements ShoppingCart{
+public class Customer implements ShoppingCartService {
 	
 	private String name;
 	

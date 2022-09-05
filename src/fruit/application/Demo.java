@@ -1,8 +1,16 @@
-package fruit;
+package fruit.application;
+
+import fruit.factory.FruitFactory;
+import fruit.biz.Apple;
+import fruit.service.serviceimpl.Customer;
+import fruit.service.serviceimpl.ProxyShoppingCart;
+import fruit.vo.Goods;
+import fruit.biz.Mango;
+import fruit.biz.Strawberry;
+import fruit.service.ShoppingCartService;
+import fruit.vo.Supermarket;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class Demo {
@@ -26,7 +34,7 @@ public class Demo {
 		
 		System.out.println("第1题---------------------------------------------------");
 		Customer customerA = new Customer("A");
-		ShoppingCart shoppingCartA = new ProxyShoppingCart(supermarket, customerA);
+		ShoppingCartService shoppingCartA = new ProxyShoppingCart(supermarket, customerA);
 		shoppingCartA.add(apple, 3);
 		shoppingCartA.add(strawberry, 4);
 		System.out.println("顾客"+customerA.getName()+"合计需支付:" + supermarket.calculate(customerA.getShoppingCart()) + "元\n");
@@ -36,7 +44,7 @@ public class Demo {
 		goodsList.add(mango);
 		
 		Customer customerB = new Customer("B");
-		ShoppingCart shoppingCartB = new ProxyShoppingCart(supermarket, customerB);
+		ShoppingCartService shoppingCartB = new ProxyShoppingCart(supermarket, customerB);
 		shoppingCartB.add(apple, 3);
 		shoppingCartB.add(strawberry, 4);
 		shoppingCartB.add(mango, 5);
@@ -45,7 +53,7 @@ public class Demo {
 		
 		System.out.println("第3题---------------------------------------------------");
 		Customer customerC = new Customer("C");
-		ShoppingCart shoppingCartC = new ProxyShoppingCart(supermarket, customerC);
+		ShoppingCartService shoppingCartC = new ProxyShoppingCart(supermarket, customerC);
 		apple.discount(new BigDecimal("0.8"));
 		shoppingCartC.add(apple, 3);
 		shoppingCartC.add(strawberry, 4);
@@ -57,7 +65,7 @@ public class Demo {
 		//设置满减
 		supermarket.setSatisfy(new BigDecimal("100"));
 		supermarket.setReduce(new BigDecimal("10"));
-		ShoppingCart shoppingCartD = new ProxyShoppingCart(supermarket, customerD);
+		ShoppingCartService shoppingCartD = new ProxyShoppingCart(supermarket, customerD);
 		
 		shoppingCartD.add(apple, 3);
 		shoppingCartD.add(strawberry, 4);

@@ -1,8 +1,11 @@
-package fruit;
+package fruit.biz;
+
+import fruit.service.FruitService;
+import fruit.vo.Goods;
 
 import java.math.BigDecimal;
 
-public class Strawberry extends Goods  implements Fruit {
+public class Strawberry extends Goods implements FruitService {
 	
 	public Strawberry() {
 		super();
